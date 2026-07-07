@@ -1,6 +1,6 @@
 ---
 title: "Inscription"
-weight: 5
+weight: 2
 ---
 
 Pour vous inscrire, contactez-nous par courriel : [info@coralline.club](mailto:info@coralline.club)

@@ -2,8 +2,16 @@ header, .bg-dark-blue {
   background-color: #0e7490 !important;
 }
 
-.cover-main:before {
-  opacity: 0.25 !important;
+header.cover {
+  background-size: 100% auto !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  min-height: 160px;
+}
+
+nav .flex-l {
+  display: flex !important;
+  flex-wrap: wrap;
 }
 
 a, .link {
