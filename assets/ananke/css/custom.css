@@ -1,0 +1,11 @@
+header, .bg-dark-blue {
+  background-color: #0e7490 !important;
+}
+
+a, .link {
+  color: #0e7490;
+}
+
+a:hover {
+  color: #0a5a70;
+}
