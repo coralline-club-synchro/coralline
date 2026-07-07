@@ -1,0 +1,8 @@
+baseURL = 'https://coralline.club/'
+locale = 'fr'
+title = 'Coralline Natation Artistique'
+theme = 'ananke'
+
+[params]
+  description = "Un club, une équipe, une famille — Natation Artistique à Repentigny et Terrebonne"
+  contact_email = "info@coralline.club"
