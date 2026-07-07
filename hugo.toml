@@ -24,11 +24,6 @@ theme = 'ananke'
   weight = 4
 
 [[menus.main]]
-  name = "Nouvelles"
-  url = "/nouvelles/"
-  weight = 5
-
-[[menus.main]]
   name = "Contact"
   url = "/contact/"
   weight = 6
@@ -41,6 +36,9 @@ theme = 'ananke'
 
 [params.ananke]
   custom_css = ["custom.css"]
+
+[params.ananke.pages]
+  show_list_images = true
 
 [params.ananke.social.follow]
   networks = ["instagram", "tiktok", "facebook"]

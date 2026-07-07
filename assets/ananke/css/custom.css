@@ -9,6 +9,27 @@ header.cover {
   min-height: 160px;
 }
 
+.img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Cartes nouvelles : 2 colonnes au lieu de 3 */
+section.flex-ns > div.w-30-l {
+  width: 48% !important;
+}
+
+/* Texte plus lisible sur toutes les pages */
+article p, article li {
+  font-size: 1.1rem !important;
+  line-height: 1.7 !important;
+}
+
+h1.f2 { font-size: 2rem !important; }
+h1.f3 { font-size: 1.5rem !important; }
+
 nav .flex-l {
   display: flex !important;
   flex-wrap: wrap;

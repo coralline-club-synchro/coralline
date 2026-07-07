@@ -10,43 +10,63 @@
 - Stack : Hugo (site statique) + Decap CMS (interface admin) + Netlify (hébergement gratuit)
 - Bitbucket : repo `coralline` sous compte JulieCardin75
 - Pas de backend Python : sur-ingénierie pour ce besoin
-- Hébergement : Netlify (gratuit, supporte Bitbucket, déploiement automatique)
+- Hébergement : Netlify (gratuit, déploiement via CLI)
+- Pas de connexion Bitbucket-Netlify OAuth (sécurité : accès trop large)
+- Déploiement manuel : `netlify deploy --prod --dir=public`
+
+## URLs importantes
+- Site en production : https://coralline.netlify.app
+- Admin Netlify : https://app.netlify.com/projects/coralline
+- Netlify Project ID : 69d56696-e946-415a-aaa7-6e1dd48557d2
+- Repo Bitbucket : https://bitbucket.org/JulieCardin75/coralline
+
+## Commandes utiles
+```bash
+# Serveur local dev
+hugo server --buildDrafts --disableFastRender
+
+# Déployer en production
+cd /Users/julie/VS_Code_Projects/Coralline
+hugo --minify
+netlify deploy --prod --dir=public
+```
 
 ## Fonctionnalités requises
 ### Visiteurs (public)
-- Pages : mission, équipe, valeurs, cours offerts, contact
-- Galerie photos
-- Actualités / nouvelles (compétitions, sorties, dates pratiques)
-- Calendrier pratiques et compétitions
-- Lien mailto: inscription (ouvre email pré-rempli)
-- Liens réseaux sociaux (Instagram, TikTok, Facebook)
-- Logos partenaires
+- Pages : mission, équipe, valeurs, cours offerts, sport sain, contact ✅
+- Nouvelles / actualités ✅
+- Liens réseaux sociaux (Instagram, TikTok, Facebook) ✅
+- Lien mailto: inscription (ouvre email pré-rempli) ✅
+- Bannière photo accueil (placeholder, haute res à obtenir du club) 🔄
 
 ### Admin (1-2 personnes, interface /admin)
-- Ajouter / supprimer photos
-- Poster une nouvelle (texte + photo optionnelle)
-- Modifier dates pratiques / compétitions
-- Modifier infos de contact
+- Ajouter / supprimer photos ❌
+- Poster une nouvelle ❌
+- Modifier dates pratiques / compétitions ❌
+- Modifier infos de contact ❌
+→ Nécessite Decap CMS (prochaine étape)
 
 ## Approche de développement
 - Étape par étape : tester et valider chaque morceau avant d'ajouter la suite
-- Exception : regrouper si nécessaire pour pouvoir tester
 
 ## État avancement
 ### Fait ✅
 - Hugo v0.164.0 installé (brew)
-- Répertoire local créé : /Users/julie/VS_Code_Projects/Coralline
-
-### En cours 🔄
-- Création repo Bitbucket `coralline` (en attente Julie)
-- Initialisation projet Hugo
+- Répertoire local : /Users/julie/VS_Code_Projects/Coralline
+- Repo Bitbucket créé et connecté
+- Structure Hugo + thème Ananke
+- 7 pages contenu (accueil, inscription, cours, équipe, sport-sain, nouvelles, contact)
+- Menu navigation complet dans bon ordre
+- Couleur aquatique #0e7490
+- Réseaux sociaux (Instagram, TikTok, Facebook)
+- 2 nouvelles de démonstration
+- Netlify CLI installé + site déployé en production
 
 ### À faire ❌
-- Init git + connexion Bitbucket
-- Structure Hugo de base
-- Pages statiques (contenu)
-- Intégration Decap CMS
-- Connexion Netlify
-- Transfert contenu depuis site actuel
-- Tests et validation
-- Déploiement final
+- Galerie photos (page avec toutes les photos)
+- Decap CMS (interface /admin pour la cliente)
+- Bannière haute résolution (demander au club)
+- Largeur bannière à ajuster
+- Style menu (cosmétique, pour plus tard)
+- Transfert domaine coralline.club → Netlify (quand prêt)
+- Créer compte Netlify + Bitbucket au nom du club (livraison finale)

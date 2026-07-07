@@ -6,3 +6,6 @@ resources/
 node_modules/
 dist/
 .idea/
+
+# Local Netlify folder
+.netlify
