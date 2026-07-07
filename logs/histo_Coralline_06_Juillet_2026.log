@@ -1,0 +1,52 @@
+# histo_Coralline_06_Juillet_2026
+
+## Contexte projet
+- Client : club Coralline Natation Artistique (organisme but non lucratif)
+- Bénévolat pour refaire site web désuet
+- Site actuel : https://coralline.club/index.html (Weebly + JustHost)
+- Contact client : 1 personne non-technique mais apprenante rapide
+
+## Décisions d'architecture
+- Stack : Hugo (site statique) + Decap CMS (interface admin) + Netlify (hébergement gratuit)
+- Bitbucket : repo `coralline` sous compte JulieCardin75
+- Pas de backend Python : sur-ingénierie pour ce besoin
+- Hébergement : Netlify (gratuit, supporte Bitbucket, déploiement automatique)
+
+## Fonctionnalités requises
+### Visiteurs (public)
+- Pages : mission, équipe, valeurs, cours offerts, contact
+- Galerie photos
+- Actualités / nouvelles (compétitions, sorties, dates pratiques)
+- Calendrier pratiques et compétitions
+- Lien mailto: inscription (ouvre email pré-rempli)
+- Liens réseaux sociaux (Instagram, TikTok, Facebook)
+- Logos partenaires
+
+### Admin (1-2 personnes, interface /admin)
+- Ajouter / supprimer photos
+- Poster une nouvelle (texte + photo optionnelle)
+- Modifier dates pratiques / compétitions
+- Modifier infos de contact
+
+## Approche de développement
+- Étape par étape : tester et valider chaque morceau avant d'ajouter la suite
+- Exception : regrouper si nécessaire pour pouvoir tester
+
+## État avancement
+### Fait ✅
+- Hugo v0.164.0 installé (brew)
+- Répertoire local créé : /Users/julie/VS_Code_Projects/Coralline
+
+### En cours 🔄
+- Création repo Bitbucket `coralline` (en attente Julie)
+- Initialisation projet Hugo
+
+### À faire ❌
+- Init git + connexion Bitbucket
+- Structure Hugo de base
+- Pages statiques (contenu)
+- Intégration Decap CMS
+- Connexion Netlify
+- Transfert contenu depuis site actuel
+- Tests et validation
+- Déploiement final
