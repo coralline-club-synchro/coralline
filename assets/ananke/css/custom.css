@@ -2,6 +2,10 @@ header, .bg-dark-blue {
   background-color: #0e7490 !important;
 }
 
+.cover-main:before {
+  opacity: 0.25 !important;
+}
+
 a, .link {
   color: #0e7490;
 }
