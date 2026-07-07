@@ -7,3 +7,15 @@ theme = 'ananke'
   description = "Un club, une équipe, une famille — Natation Artistique à Repentigny et Terrebonne"
   contact_email = "info@coralline.club"
   background_color_class = "bg-dark-blue"
+
+[params.ananke.social.follow]
+  networks = ["instagram", "tiktok", "facebook"]
+
+[params.ananke.social.instagram]
+  profilelink = "https://www.instagram.com/coralline.club/"
+
+[params.ananke.social.tiktok]
+  profilelink = "https://www.tiktok.com/@club.coralline"
+
+[params.ananke.social.facebook]
+  profilelink = "https://www.facebook.com/clubcoralline"
