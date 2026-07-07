@@ -1,5 +1,6 @@
 ---
 title: "Contact"
+weight: 6
 ---
 
 **Courriel :** [info@coralline.club](mailto:info@coralline.club)

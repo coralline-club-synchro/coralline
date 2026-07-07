@@ -1,5 +1,6 @@
 ---
 title: "Valeurs et équipe"
+weight: 4
 ---
 
 **ONE CLUB — ONE TEAM — ONE FAMILY**
