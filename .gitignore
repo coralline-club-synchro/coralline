@@ -1,4 +1,8 @@
 .DS_Store
+Thumbs.db
 public/
 resources/
 .hugo_build.lock
+node_modules/
+dist/
+.idea/
