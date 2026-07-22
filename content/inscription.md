@@ -1,5 +1,5 @@
 ---
-title: Inscriptions
+title: Inscription
 weight: 2
 saison: estivale
 mois: juillet
