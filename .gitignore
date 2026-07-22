@@ -9,3 +9,12 @@ dist/
 
 # Local Netlify folder
 .netlify
+
+# Notes personnelles (peuvent contenir des mots de passe/tokens)
+logs/notes_Ju.sh
+
+# Config locale de l'agent (pas partie du site)
+.claude/
+
+# Photos brutes de travail (non utilisées par Hugo, seul static/images/ est servi)
+/images/

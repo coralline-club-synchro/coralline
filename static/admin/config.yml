@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "inscription"
+    label: "Inscription"
+    files:
+      - file: "content/inscription.md"
+        label: "Inscription"
+        name: "inscription"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Ordre dans le menu (ne pas changer)", name: "weight", widget: "hidden", default: 2 }
+          - label: "Saison"
+            name: "saison"
+            widget: "select"
+            options: ["hiver", "printemps", "estivale", "automnale"]
+          - { label: "Mois", name: "mois", widget: "string" }
+          - { label: "Année", name: "annee", widget: "number", value_type: "int" }
+          - { label: "Lien d'inscription récréative", name: "lien_recreatif", widget: "string" }
+          - label: "Horaire Repentigny"
+            name: "horaire_repentigny"
+            widget: "list"
+            summary: "{{groupe}} — {{jour}} {{heure}}"
+            fields:
+              - { label: "Groupe (ex: Grenouilles (5-7 ans))", name: "groupe", widget: "string" }
+              - { label: "Durée (ex: 1 heure)", name: "duree", widget: "string" }
+              - { label: "Jour (ex: lundi)", name: "jour", widget: "string" }
+              - { label: "Heure (ex: 17h-18h)", name: "heure", widget: "string" }
+              - { label: "Dates (ex: 6, 13, 20, 27 juillet)", name: "dates", widget: "string" }
+          - label: "Horaire Terrebonne"
+            name: "horaire_terrebonne"
+            widget: "list"
+            summary: "{{groupe}} — {{jour}} {{heure}}"
+            fields:
+              - { label: "Groupe (ex: Grenouilles (5-7 ans))", name: "groupe", widget: "string" }
+              - { label: "Durée (ex: 1 heure)", name: "duree", widget: "string" }
+              - { label: "Jour (ex: mercredi)", name: "jour", widget: "string" }
+              - { label: "Heure (ex: 17h-18h)", name: "heure", widget: "string" }
+              - { label: "Dates (ex: 8, 15, 22, 29 juillet)", name: "dates", widget: "string" }
+          - { label: "Cours techniques - jours", name: "horaire_technique_jours", widget: "string" }
+          - { label: "Cours techniques - heure", name: "horaire_technique_heure", widget: "string" }
+          - { label: "Cours techniques - lieu", name: "horaire_technique_lieu", widget: "string" }
+          - { label: "Lien d'inscription technique", name: "lien_technique", widget: "string" }

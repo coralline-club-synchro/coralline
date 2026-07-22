@@ -1,0 +1,14 @@
+{{ $p := .Page.Params }}
+{{ $lien := $p.lien_recreatif }}
+<p><strong><a href="{{ $lien }}">Repentigny</a></strong></p>
+<ul>
+{{ range $p.horaire_repentigny }}
+  <li>{{ .groupe }} {{ .duree }} : {{ .jour }} {{ .heure }} ({{ .dates }})</li>
+{{ end }}
+</ul>
+<p><strong><a href="{{ $lien }}">Terrebonne</a></strong></p>
+<ul>
+{{ range $p.horaire_terrebonne }}
+  <li>{{ .groupe }} {{ .duree }} : {{ .jour }} {{ .heure }} ({{ .dates }})</li>
+{{ end }}
+</ul>
