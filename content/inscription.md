@@ -1,56 +1,56 @@
 ---
-title: "Inscription"
+title: Inscriptions
 weight: 2
-saison: "estivale"
-mois: "juillet"
+saison: estivale
+mois: juillet
 annee: 2026
-lien_recreatif: "https://apps.publicationsports.com/fr/public/191/online-registration.html?org=12160&season=3938&form=3981"
+lien_recreatif: https://apps.publicationsports.com/fr/public/191/online-registration.html?org=12160&season=3938&form=3981
 horaire_repentigny:
-  - groupe: "Grenouilles (5-7 ans)"
-    duree: "1 heure"
-    jour: "lundi"
-    heure: "17h-18h"
-    dates: "6, 13, 20, 27 juillet, 3, 10 août"
-  - groupe: "Méduses (8-10 ans)"
-    duree: "2 heures"
-    jour: "lundi"
-    heure: "18h-20h"
-    dates: "6, 13, 20, 27 juillet, 3, 10 août"
-  - groupe: "Dauphines (11 ans et +)"
-    duree: "2 heures"
-    jour: "lundi"
-    heure: "18h-20h"
-    dates: "6, 13, 20, 27 juillet, 3, 10 août"
-  - groupe: "Maîtres (18 ans et +)"
-    duree: "1h30"
-    jour: "vendredi"
-    heure: "17h30-19h"
-    dates: "10, 17, 24, 31 juillet, 7, 14 août"
+  - groupe: Grenouilles (5-7 ans)
+    duree: 1 heure
+    jour: lundi
+    heure: 17h-18h
+    dates: 6, 13, 20, 27 juillet, 3, 10 août
+  - groupe: Méduses (8-10 ans)
+    duree: 2 heures
+    jour: lundi
+    heure: 18h-20h
+    dates: 6, 13, 20, 27 juillet, 3, 10 août
+  - groupe: Dauphines (11 ans et +)
+    duree: 2 heures
+    jour: lundi
+    heure: 18h-20h
+    dates: 6, 13, 20, 27 juillet, 3, 10 août
+  - groupe: Maîtres (18 ans et +)
+    duree: 1h30
+    jour: vendredi
+    heure: 17h30-19h
+    dates: 10, 17, 24, 31 juillet, 7, 14 août
 horaire_terrebonne:
-  - groupe: "Grenouilles (5-7 ans)"
-    duree: "1 heure"
-    jour: "mercredi"
-    heure: "17h-18h"
-    dates: "8, 15, 22, 29 juillet; 5, 12 août"
-  - groupe: "Méduses (8-10 ans)"
-    duree: "2 heures"
-    jour: "mercredi"
-    heure: "18h-20h"
-    dates: "8, 15, 22, 29 juillet; 5, 12 août"
-  - groupe: "Dauphines (11 ans et +)"
-    duree: "2 heures"
-    jour: "mercredi"
-    heure: "18h-20h"
-    dates: "8, 15, 22, 29 juillet; 5, 12 août"
-  - groupe: "Maîtres (18 ans et +)"
-    duree: "1h30"
-    jour: "jeudi"
-    heure: "18h-19h30"
-    dates: "9, 16, 23, 30 juillet, 6, 13 août"
-horaire_technique_jours: "Lundis et jeudis"
-horaire_technique_heure: "18h30 à 20h30"
-horaire_technique_lieu: "Piscine de Terrebonne"
-lien_technique: "https://apps.publicationsports.com/fr/public/191/online-registration.html?org=12160&season=3938&form=3980"
+  - groupe: Grenouilles (5-7 ans)
+    duree: 1 heure
+    jour: mercredi
+    heure: 17h-18h
+    dates: 8, 15, 22, 29 juillet; 5, 12 août
+  - groupe: Méduses (8-10 ans)
+    duree: 2 heures
+    jour: mercredi
+    heure: 18h-20h
+    dates: 8, 15, 22, 29 juillet; 5, 12 août
+  - groupe: Dauphines (11 ans et +)
+    duree: 2 heures
+    jour: mercredi
+    heure: 18h-20h
+    dates: 8, 15, 22, 29 juillet; 5, 12 août
+  - groupe: Maîtres (18 ans et +)
+    duree: 1h30
+    jour: jeudi
+    heure: 18h-19h30
+    dates: 9, 16, 23, 30 juillet, 6, 13 août
+horaire_technique_jours: Lundis et jeudis
+horaire_technique_heure: 18h30 à 20h30
+horaire_technique_lieu: Piscine de Terrebonne
+lien_technique: https://apps.publicationsports.com/fr/public/191/online-registration.html?org=12160&season=3938&form=3980
 ---
 
 ## Sessions récréatives d'été
