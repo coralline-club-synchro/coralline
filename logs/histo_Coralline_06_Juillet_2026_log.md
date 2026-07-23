@@ -134,10 +134,61 @@ Tests de sécurité restants à faire éventuellement (moins urgents, système d
 
 **✅ 2FA ACTIVÉE sur les deux comptes racines (22 Juillet 2026)** : GitHub (GennyCoralline) et Netlify (jcardinbif@gmail.com), méthode app d'authentification (Authenticator, pas SMS — pour éviter d'exposer un numéro de téléphone, cohérent avec la préoccupation initiale de Julie de garder les comptes du club anonymisés). Codes de récupération sauvegardés dans un gestionnaire de mots de passe (Bitwarden), pas dans les fichiers du projet. Principe de gestion des secrets établi et compris par Julie : les vraies valeurs sensibles (mots de passe, tokens, codes de récup) vivent uniquement dans le gestionnaire de mots de passe ; les notes de projet ne contiennent que des références ("voir Bitwarden → nom de l'entrée"), jamais la valeur elle-même. Le maillon faible identifié plus tôt dans la session est maintenant réglé.
 
+**🐛 INCIDENT ET RÉSOLUTION — Genny a testé pour vrai, erreur au Publish (23 Juillet 2026)**
+Genny a accepté l'invitation, créé son mot de passe, ouvert `/admin`, cliqué sur Inscription et tenté de modifier un horaire. Au clic sur **Publish**, une page d'erreur React est apparue ("Minified React error #130"). Julie a envoyé une capture d'écran (photo du portable).
+
+Diagnostic : `static/admin/index.html` chargeait Decap CMS via un **tag de version flottant** (`decap-cms@^3.0.0` sur unpkg), qui prend toujours la toute dernière version 3.x publiée. Une nouvelle version (**3.15.0**) venait d'être mise en ligne quelques heures avant l'incident — coïncidence très probable, l'erreur #130 étant un bug connu et récurrent de Decap CMS (plusieurs issues GitHub similaires trouvées).
+
+**Correctif appliqué** : version figée à **3.11.0** (version stable documentée officiellement) au lieu du tag flottant `^3.0.0` — évite ce genre de régression surprise à chaque nouvelle sortie de Decap.
+
+**Découverte cruciale en vérifiant GitHub** : malgré l'écran d'erreur affiché à Genny, sa publication **avait réellement réussi** — 3 commits créés sur GitHub (`763bf1c`, `35f96da`, `7a2ed8e`), incluant un vrai changement de sa part : horaire Terrebonne Maîtres modifié de 18h-19h30 à **18h30-20h**. L'erreur React était un bug d'affichage de la confirmation, pas un échec réel de sauvegarde (Git Gateway avait déjà fait son travail avant le crash du composant React).
+
+**Résolution** : `git fetch` + `git merge` pour combiner le correctif de version ET la vraie modification de Genny sans rien perdre, poussé vers GitHub (`b5e2bf9`), site public vérifié à jour avec le bon horaire.
+
+**Leçon pour Julie/Genny à venir** : si une erreur d'affichage apparaît après un Publish, ne pas assumer que rien n'a été sauvegardé — vérifier d'abord sur le site en ligne (après quelques minutes) avant de recommencer la modification, pour éviter les doublons.
+
+**✅ 2e test de Genny réussi (23 Juillet 2026)** : après le correctif de version, Genny a modifié un horaire (Dauphines Repentigny : "18h-20h" → "18h-20h00") sans aucune erreur cette fois — commit `2142b48` propre. Confirme que le correctif de version Decap CMS (3.11.0 figée) tient en usage réel.
+
+**✅ CMS étendu aux champs priorité 2 (23 Juillet 2026)** — Julie a donné le feu vert après la preuve de concept réussie sur Inscription :
+- **Conseil d'administration** (page Valeurs et équipe) : liste `ca` (nom/rôle) en front matter, shortcode `layouts/_shortcodes/ca-liste.html`, éditable via collection "equipe" dans Decap
+- **Galerie photos accueil** : liste `galerie` (image) en front matter, shortcode `galerie-photos.html`, éditable via collection "accueil" — ajout/retrait de photos possible via le widget image de Decap
+- **Logos partenaires accueil** : liste `partenaires` (nom/lien/image) en front matter, shortcode `partenaires-liste.html`, éditable via collection "accueil"
+- `static/admin/config.yml` mis à jour avec les 2 nouvelles collections ("equipe", "accueil")
+- Build + déploiement Netlify + push GitHub tous vérifiés, contenu identique avant/après restructuration (confirmé par `grep` sur le HTML généré)
+
+**📄 Documentation professionnelle créée (23 Juillet 2026)** — à la demande de Julie, pour appuyer une présentation professionnelle du travail (supervision, entrevue) :
+- `docs/Specifications_Techniques_Coralline.md` : document de référence structuré Objectif → Outil → Spécifications par volet (authentification, sécurité, hébergement, CMS)
+- `docs/Resume_Entrevue_Technique_Coralline.md` : aide-mémoire personnel avec vocabulaire professionnel (JAMstack, CI/CD, scoped token, version pinning, test négatif...) et réponses structurées aux questions probables en entrevue
+- Dossier `docs/` volontairement distinct de `logs/` (référence structurée par sujet vs journal chronologique — convention établie précédemment)
+
+**🔍 Audit des dépendances à l'ancien site (23 Juillet 2026)** : recherche exhaustive de toutes les références `coralline.club` dans le contenu. Conclusion : la grande majorité (adresse courriel `info@coralline.club`, `baseURL` dans hugo.toml, lien Instagram) ne sont **pas** des dépendances réelles à l'ancien hébergement — seuls **5 PDF** (philosophie de gestion, code d'éthique, politique respect et collaboration, comprendre le sport, DLTA) sont physiquement hébergés sur l'ancien serveur Weebly/JustHost. Migration jugée simple et gratuite une fois les fichiers originaux obtenus (pas de complexité technique, juste besoin des fichiers sources).
+
+**Contexte important appris** : l'hébergement actuel (Weebly/JustHost) est **payé jusqu'à une échéance prochaine** ("le temps payé couvert") — donc échéance réelle à venir, pas juste une question théorique. Julie a déjà écrit à Genny pour demander les 5 PDF, en expliquant le pourquoi (indépendance vis-à-vis de l'ancien hébergement avant son expiration).
+
+**Autres points soulevés par Julie (23 Juillet 2026), à traiter dans une prochaine session :**
+- Le compte Netlify (hébergement) appartient personnellement à Julie (jcardinbif@gmail.com), contrairement à GitHub qui est déjà au nom du club — **risque de continuité** si Julie cesse le bénévolat un jour. Question ouverte : transférer la propriété Netlify vers un compte du club, comme fait pour GitHub ?
+- Qui gère/paie le renouvellement du nom de domaine `coralline.club` — à clarifier avec le club
+- Netlify Identity/Git Gateway étant déprécié (voir plus haut) reste un risque de dépendance à surveiller à moyen terme
+- Formulaire d'infolettre collecte des courriels — vérifier si des obligations de la **Loi 25** (protection des renseignements personnels, Québec) s'appliquent — pas encore investigué, à ne pas assumer sans vérifier
+
+**📚 Organisation de la documentation (23 Juillet 2026)** — Julie a demandé un endroit pour classer/répertorier tout ce qui s'accumulait. Structure finale en 3 dossiers distincts (jamais mélanger) :
+- `logs/` — journal chronologique uniquement (ce fichier)
+- `docs/` — documentation de référence : `Specifications_Techniques_Coralline.md`, `Resume_Entrevue_Technique_Coralline.md`, `Comprendre_Domaine_Hebergement_DNS.md` (explication domaine/hébergement/DNS avec analogie téléphone, tableau de questions pour la personne de l'ancien site, plan de transfert Netlify)
+- `communications/` (nouveau) — messages/courriels rédigés pour l'externe : `message_client_preview.md`, `message_genny_invitation.md`, `message_genny_verif_fix.md`, `courriel_questions_domaine_ancien_site.md` (prêt à envoyer à Genny → sa collègue de l'ancien site)
+
+**⏸️ PAUSE — Julie s'absente du projet (23 Juillet 2026)**
+Julie doit consacrer du temps à d'autres tâches et ne sera pas disponible pour valider des questions pendant un moment. Consignes données pour la suite :
+- **Permission confirmée** : autorisation permanente déjà établie pour ce projet (voir [[feedback_autonomy]]) couvre tout travail fichiers/code/terminal (édition contenu, build Hugo, commit/push GitHub avec token déjà fourni, déploiement Netlify CLI) — peut continuer sans redemander.
+- **Limite claire identifiée** : impossible de naviguer dans un navigateur web (pas d'outil browser) — donc tout ce qui nécessite de cliquer dans le tableau de bord Netlify (créer compte club, inviter comme "Owner", activer des réglages via l'interface) doit attendre le retour de Julie.
+- **Rien n'est bloqué actuellement** : le scope CMS demandé (Inscription + CA + galerie + partenaires) est 100% complété, poussé sur GitHub, déployé en production. Aucune action requise de Julie pendant son absence.
+- **Si du contenu arrive entre-temps** (ex. les 5 PDF de Genny), possible de l'intégrer sans la déranger.
+- **À son retour** : reprendre par le transfert de propriété Netlify vers un compte du club (nécessite sa présence pour les clics dans le navigateur) — voir plan détaillé dans `docs/Comprendre_Domaine_Hebergement_DNS.md`.
+
 ### À faire ❌
-- Confirmer que Genny a accepté l'invite et testé une modification (Inscription → publier → vérifier sur le site en ligne)
-- Étendre le CMS aux champs priorité 2 (CA, galerie photos, logos partenaires) — nécessite de restructurer ces sections en front matter comme fait pour Inscription
-- PDFs officiels (code d'éthique, philosophie de gestion, calendrier) — pointent encore vers l'ancien site coralline.club, à migrer quand le club fournit les fichiers
+- **PROCHAINE ÉTAPE AU RETOUR DE JULIE** : transfert de propriété Netlify vers le compte du club (créer compte `coralline.club.synchro@gmail.com` sur Netlify, l'inviter comme "Owner" de l'équipe) — nécessite la présence de Julie, ne peut pas être fait de façon autonome (pas d'accès navigateur)
+- Julie/Genny testent l'édition des nouveaux champs (CA, galerie, partenaires) dans `/admin`
+- Recevoir les 5 PDF de Genny (ou sa collègue, suite au courriel) et les migrer vers notre hébergement (retirer la dépendance à l'ancien site)
 - Décider du sort du repo Bitbucket original (garder en backup ou fermer)
 - Transfert domaine coralline.club → Netlify (quand prêt) — Julie a confirmé comprendre la distinction domaine (déjà payé, réutilisable) vs hébergement (change de Weebly/JustHost vers Netlify sans coût additionnel)
+- Discuter du renouvellement du domaine une fois les réponses de la collègue reçues
 - Envisager d'ajouter une clé SSH pour GennyCoralline sur l'organisation, pour éviter de régénérer un token à chaque fois qu'un push manuel est nécessaire
