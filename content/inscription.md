@@ -45,7 +45,7 @@ horaire_terrebonne:
   - groupe: Maîtres (18 ans et +)
     duree: 1h30
     jour: jeudi
-    heure: 18h-19h30
+    heure: 18h30-20h
     dates: 9, 16, 23, 30 juillet, 6, 13 août
 horaire_technique_jours: Lundis et jeudis
 horaire_technique_heure: 18h30 à 20h30
