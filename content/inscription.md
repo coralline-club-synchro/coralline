@@ -19,7 +19,7 @@ horaire_repentigny:
   - groupe: Dauphines (11 ans et +)
     duree: 2 heures
     jour: lundi
-    heure: 18h-20h
+    heure: 18h-20h00
     dates: 6, 13, 20, 27 juillet, 3, 10 août
   - groupe: Maîtres (18 ans et +)
     duree: 1h30
