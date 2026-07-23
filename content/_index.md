@@ -29,7 +29,6 @@ galerie:
   - image: /images/galerie/jj99854.jpg
   - image: /images/galerie/rpp-2838.jpg
   - image: /images/galerie/rpp-3193.jpg
-  - image: /images/uploads/sirene_cute.jpeg
 ---
 
 Bienvenue chez nous, un club offrant des cours de natation artistique à Repentigny et Terrebonne.
