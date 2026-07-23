@@ -3,6 +3,32 @@ title: "Coralline Natation Artistique"
 description: "Un club, une équipe, une famille"
 featured_image: "/images/banniere_accueil.jpg"
 omit_header_text: true
+partenaires:
+  - nom: "Natation Artistique Québec"
+    lien: "http://synchroquebec.qc.ca/"
+    image: "/images/liens/naq.png"
+  - nom: "Natation Artistique Canada"
+    lien: "https://artisticswimming.ca/fr/"
+    image: "/images/liens/natation-canada.png"
+  - nom: "Loisir et Sport Lanaudière"
+    lien: "http://www.loisir-lanaudiere.qc.ca/"
+    image: "/images/liens/lanaudiere.jpg"
+galerie:
+  - image: "/images/galerie/img-0616.jpg"
+  - image: "/images/galerie/img-0693.jpg"
+  - image: "/images/galerie/img-0716.jpg"
+  - image: "/images/galerie/img-0719.jpg"
+  - image: "/images/galerie/img-0769.jpg"
+  - image: "/images/galerie/img-0776.jpg"
+  - image: "/images/galerie/img-0839.jpg"
+  - image: "/images/galerie/img-0840.jpg"
+  - image: "/images/galerie/img-0883.jpg"
+  - image: "/images/galerie/img-0993.jpg"
+  - image: "/images/galerie/jj92762.jpg"
+  - image: "/images/galerie/jj93130.jpg"
+  - image: "/images/galerie/jj99854.jpg"
+  - image: "/images/galerie/rpp-2838.jpg"
+  - image: "/images/galerie/rpp-3193.jpg"
 ---
 
 Bienvenue chez nous, un club offrant des cours de natation artistique à Repentigny et Terrebonne.
@@ -72,11 +98,7 @@ Saviez-vous… l'ingrédient miracle pour la tenue impeccable des chignons lors 
 
 <h2 style="text-align:center; margin: 2rem 0 1rem;">Organismes partenaires</h2>
 
-<div class="liens-grid" style="grid-template-columns: repeat(3, 1fr); align-items:center;">
-  <a href="http://synchroquebec.qc.ca/" target="_blank" rel="noopener"><img src="/images/liens/naq.png" alt="Natation Artistique Québec"></a>
-  <a href="https://artisticswimming.ca/fr/" target="_blank" rel="noopener"><img src="/images/liens/natation-canada.png" alt="Natation Artistique Canada"></a>
-  <a href="http://www.loisir-lanaudiere.qc.ca/" target="_blank" rel="noopener"><img src="/images/liens/lanaudiere.jpg" alt="Loisir et Sport Lanaudière"></a>
-</div>
+{{< partenaires-liste >}}
 
 <h2 style="text-align:center; margin: 2rem 0 1rem;">Nos lieux d'entraînement</h2>
 
@@ -93,23 +115,7 @@ Saviez-vous… l'ingrédient miracle pour la tenue impeccable des chignons lors 
 
 <h2 style="text-align:center; margin: 2rem 0 1rem;">Un club — Une équipe — Une famille</h2>
 
-<div class="photo-grid">
-  <img src="/images/galerie/img-0616.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0693.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0716.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0719.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0769.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0776.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0839.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0840.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0883.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/img-0993.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/jj92762.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/jj93130.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/jj99854.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/rpp-2838.jpg" alt="Coralline natation artistique">
-  <img src="/images/galerie/rpp-3193.jpg" alt="Coralline natation artistique">
-</div>
+{{< galerie-photos >}}
 
 <div style="text-align:center; margin: 3rem 0;">
   <p>Vous pouvez nous contacter au <a href="mailto:info@coralline.club">info@coralline.club</a></p>

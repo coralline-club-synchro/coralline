@@ -1,6 +1,25 @@
 ---
 title: "Valeurs et équipe"
 weight: 4
+ca:
+  - nom: "Lyna Senecal"
+    role: "Présidente"
+  - nom: "Julie Lajoie"
+    role: "Vice présidente"
+  - nom: "Andréanne Mathieu"
+    role: "Secrétaire/Soutien gestion RH"
+  - nom: "Andréanne Richer"
+    role: "Registraire/Soutien aux événements"
+  - nom: "Stéphanie Magane Diaz"
+    role: "Responsable des événements"
+  - nom: "France Quevillon"
+    role: "Responsable des compétitions"
+  - nom: "Meivys Rodriguez Falcon"
+    role: "Trésorière/Soutien au communications et marketing"
+  - nom: "Stéphanie Beaudry"
+    role: "Responsable des communications et marketing"
+  - nom: "Geneviève Cardin"
+    role: "Responsable gestion RH"
 ---
 
 ## Nos valeurs
@@ -48,17 +67,7 @@ C'est l'essence d'une équipe, qu'il s'agisse des athlètes, des coachs, du CA o
 
 ## Conseil d'administration
 
-<div class="ca-grid">
-  <div><h3>Lyna Senecal</h3><p>Présidente</p></div>
-  <div><h3>Julie Lajoie</h3><p>Vice présidente</p></div>
-  <div><h3>Andréanne Mathieu</h3><p>Secrétaire/Soutien gestion RH</p></div>
-  <div><h3>Andréanne Richer</h3><p>Registraire/Soutien aux événements</p></div>
-  <div><h3>Stéphanie Magane Diaz</h3><p>Responsable des événements</p></div>
-  <div><h3>France Quevillon</h3><p>Responsable des compétitions</p></div>
-  <div><h3>Meivys Rodriguez Falcon</h3><p>Trésorière/Soutien au communications et marketing</p></div>
-  <div><h3>Stéphanie Beaudry</h3><p>Responsable des communications et marketing</p></div>
-  <div><h3>Geneviève Cardin</h3><p>Responsable gestion RH</p></div>
-</div>
+{{< ca-liste >}}
 
 ## Documents administratifs
 

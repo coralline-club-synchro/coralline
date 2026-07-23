@@ -1,0 +1,5 @@
+<div class="liens-grid" style="grid-template-columns: repeat(3, 1fr); align-items:center;">
+{{ range .Page.Params.partenaires }}
+  <a href="{{ .lien }}" target="_blank" rel="noopener"><img src="{{ .image }}" alt="{{ .nom }}"></a>
+{{ end }}
+</div>

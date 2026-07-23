@@ -46,3 +46,48 @@ collections:
           - { label: "Cours techniques - heure", name: "horaire_technique_heure", widget: "string" }
           - { label: "Cours techniques - lieu", name: "horaire_technique_lieu", widget: "string" }
           - { label: "Lien d'inscription technique", name: "lien_technique", widget: "string" }
+
+  - name: "equipe"
+    label: "Valeurs et équipe"
+    files:
+      - file: "content/equipe.md"
+        label: "Conseil d'administration"
+        name: "equipe"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Ordre dans le menu (ne pas changer)", name: "weight", widget: "hidden", default: 4 }
+          - label: "Membres du CA"
+            name: "ca"
+            widget: "list"
+            summary: "{{nom}} — {{role}}"
+            fields:
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Rôle", name: "role", widget: "string" }
+          - { label: "Contenu de la page (ne pas modifier ici)", name: "body", widget: "markdown" }
+
+  - name: "accueil"
+    label: "Accueil"
+    files:
+      - file: "content/_index.md"
+        label: "Page d'accueil"
+        name: "accueil"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Image bannière (ne pas modifier ici)", name: "featured_image", widget: "hidden" }
+          - { label: "Cacher le titre sur la bannière (ne pas modifier ici)", name: "omit_header_text", widget: "hidden", default: true }
+          - label: "Logos partenaires"
+            name: "partenaires"
+            widget: "list"
+            summary: "{{nom}}"
+            fields:
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Lien du site", name: "lien", widget: "string" }
+              - { label: "Logo", name: "image", widget: "image" }
+          - label: "Galerie photos"
+            name: "galerie"
+            widget: "list"
+            summary: "{{image}}"
+            fields:
+              - { label: "Photo", name: "image", widget: "image" }
+          - { label: "Contenu de la page (ne pas modifier ici)", name: "body", widget: "markdown" }
