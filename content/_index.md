@@ -1,34 +1,35 @@
 ---
-title: "Coralline Natation Artistique"
-description: "Un club, une équipe, une famille"
-featured_image: "/images/banniere_accueil.jpg"
+title: Coralline Natation Artistique
+description: Un club, une équipe, une famille
+featured_image: /images/banniere_accueil.jpg
 omit_header_text: true
 partenaires:
-  - nom: "Natation Artistique Québec"
-    lien: "http://synchroquebec.qc.ca/"
-    image: "/images/liens/naq.png"
-  - nom: "Natation Artistique Canada"
-    lien: "https://artisticswimming.ca/fr/"
-    image: "/images/liens/natation-canada.png"
-  - nom: "Loisir et Sport Lanaudière"
-    lien: "http://www.loisir-lanaudiere.qc.ca/"
-    image: "/images/liens/lanaudiere.jpg"
+  - nom: Natation Artistique Québec
+    lien: http://synchroquebec.qc.ca/
+    image: /images/liens/naq.png
+  - nom: Natation Artistique Canada
+    lien: https://artisticswimming.ca/fr/
+    image: /images/liens/natation-canada.png
+  - nom: Loisir et Sport Lanaudière
+    lien: http://www.loisir-lanaudiere.qc.ca/
+    image: /images/liens/lanaudiere.jpg
 galerie:
-  - image: "/images/galerie/img-0616.jpg"
-  - image: "/images/galerie/img-0693.jpg"
-  - image: "/images/galerie/img-0716.jpg"
-  - image: "/images/galerie/img-0719.jpg"
-  - image: "/images/galerie/img-0769.jpg"
-  - image: "/images/galerie/img-0776.jpg"
-  - image: "/images/galerie/img-0839.jpg"
-  - image: "/images/galerie/img-0840.jpg"
-  - image: "/images/galerie/img-0883.jpg"
-  - image: "/images/galerie/img-0993.jpg"
-  - image: "/images/galerie/jj92762.jpg"
-  - image: "/images/galerie/jj93130.jpg"
-  - image: "/images/galerie/jj99854.jpg"
-  - image: "/images/galerie/rpp-2838.jpg"
-  - image: "/images/galerie/rpp-3193.jpg"
+  - image: /images/galerie/img-0616.jpg
+  - image: /images/galerie/img-0693.jpg
+  - image: /images/galerie/img-0716.jpg
+  - image: /images/galerie/img-0719.jpg
+  - image: /images/galerie/img-0769.jpg
+  - image: /images/galerie/img-0776.jpg
+  - image: /images/galerie/img-0839.jpg
+  - image: /images/galerie/img-0840.jpg
+  - image: /images/galerie/img-0883.jpg
+  - image: /images/galerie/img-0993.jpg
+  - image: /images/galerie/jj92762.jpg
+  - image: /images/galerie/jj93130.jpg
+  - image: /images/galerie/jj99854.jpg
+  - image: /images/galerie/rpp-2838.jpg
+  - image: /images/galerie/rpp-3193.jpg
+  - image: /images/uploads/sirene_cute.jpeg
 ---
 
 Bienvenue chez nous, un club offrant des cours de natation artistique à Repentigny et Terrebonne.
