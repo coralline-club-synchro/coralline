@@ -104,12 +104,40 @@ netlify deploy --prod --dir=public
 6. Historique Git = traçabilité (qui/quand) + réversibilité instantanée (revert commit)
 - Maillon faible identifié : sécurité des mots de passe individuels + absence de 2FA sur les comptes Netlify (jcardinbif@gmail.com) et GitHub (GennyCoralline)
 
+### Fait ✅ (suite, 22 Juillet 2026) — Bannière + test BetaTester + INCIDENT synchro GitHub résolu
+
+**Bannière accueil remplacée** : photo haute résolution reçue du club (`images/Photo_cercle_filles_Grande_Ori.jpg`, 5198×3465), redimensionnée (2000px large, JPEG qualité 80) → `static/images/banniere_accueil.jpg`. Cadrage ajusté 2 fois suite au retour de Julie : `background-size: cover`, `background-position: center 68%` (au lieu de `center` pur) pour montrer le bas de la photo (les nageuses) plutôt que le haut, sans couper les visages. Déployé en production.
+
+**Test persona BetaTester** : Julie a créé un compte email dédié (`beta42testeux@proton.me`) et l'a invité via Netlify Identity, pour tester l'expérience d'une éditrice non-admin (elle-même, mais sans utiliser ses droits super-admin/GitHub). Bonne pratique de test avant de faire confiance à l'accès réel de Genny.
+
+**🔴 INCIDENT DÉCOUVERT ET RÉSOLU** : en testant `/admin` avec BetaTester, tous les champs de la page Inscription apparaissaient VIDES (saison, mois, année, 0 horaire). Investigation a révélé que **le repo GitHub (coralline-club-synchro/coralline) ne contenait qu'une version incomplète/ancienne du site** — le vrai travail de réplication de contenu (Inscription détaillée, Cours offerts, Valeurs, Contact, Sport sain, config Decap CMS, layouts) n'avait jamais été poussé vers GitHub après la migration du 8 juillet ; il existait seulement en local et sur l'ancien repo Bitbucket. Le site public semblait correct uniquement parce qu'il avait été déployé directement depuis l'ordinateur de Julie (`netlify deploy --prod`, contournant Git). Avec Git Gateway maintenant actif, toute publication future via `/admin` aurait utilisé cette base GitHub incomplète et risqué d'écraser le site.
+- **Résolu** : commit de synchronisation (`eed7089`) avec les 55 fichiers manquants, poussé vers GitHub via HTTPS + nouveau fine-grained token (nom "CorallineSync", généré par Julie, utilisé une seule fois en ligne de commande, jamais sauvegardé)
+- Remote SSH `github` ne fonctionnait pas (clé SSH liée au compte personnel de Julie, pas autorisée sur l'organisation) — le push HTTPS+token reste la méthode qui marche pour l'instant
+- Netlify a redéployé automatiquement depuis GitHub après le push, contenu vérifié correct sur le site public
+- `.gitignore` mis à jour : exclusion de `logs/notes_Ju.sh` (mots de passe en clair repérés et retirés par Julie — bon réflexe), `.claude/` (config agent), `/images/` (photos brutes de travail, non lues par Hugo, seul `static/images/` est servi)
+
+**Leçon apprise / vigilance future** : toujours vérifier que `git push github main` a été fait après un lot de changements de contenu, surtout maintenant que Decap CMS dépend du contenu réellement présent sur GitHub — ne plus se fier uniquement à `netlify deploy` manuel qui masque ce genre de désynchronisation.
+
+**Pédagogie** : questions de Julie sur "qu'est-ce que Netlify exactement" et "comment nommer/décrire correctement le déploiement" — expliqué : Netlify = hébergeur web (hosting provider) avec CDN, `public/` = dossier généré par Hugo, "déployer" = envoyer ce dossier vers l'hébergeur. Distinction clarifiée entre les 3 mots de passe différents (Proton = boîte mail, Netlify perso = admin site, Netlify Identity BetaTester = accès limité à `/admin` seulement).
+
+**✅ TEST BETATESTER COMPLET RÉUSSI (22 Juillet 2026)** : après la resynchronisation, Julie a repris le test avec le persona BetaTester — champs Inscription bien pré-remplis (saison "estivale", horaires Grenouilles/Méduses/Dauphines/Maîtres). Modification réelle testée : titre "Inscription" → "Inscriptions" → Publish → commit GitHub `763bf1c` créé automatiquement, **attribué correctement à `beta42testeux@proton.me`** (traçabilité confirmée) → Netlify a redéployé automatiquement en moins d'une minute → site public mis à jour, vérifié par Julie ET techniquement (curl). Julie a ensuite remis "Inscription" sans le "s" pour revenir à l'état initial — toujours fonctionnel. **Le pipeline complet CMS est validé de bout en bout, prêt pour Genny.**
+
+**🛡️ TESTS DE SÉCURITÉ — accès non autorisé (22 Juillet 2026)**
+Objectif : vérifier que "Invite only" (couche de sécurité #3) fonctionne réellement, en simulant un attaquant qui tombe sur `/admin` sans invitation.
+
+- **Test 1 (faux positif corrigé)** : Julie ouvre `/admin` dans un nouvel **onglet** d'une fenêtre privée déjà utilisée pour BetaTester → entre directement sans mot de passe. Panique initiale, mais diagnostic correct : dans une fenêtre de navigation privée, tous les onglets partagent la session tant que la fenêtre entière n'est pas fermée — ce n'était que la session BetaTester (déjà légitimement invitée) encore active, pas une faille. Julie a elle-même relevé l'erreur de méthodologie de ce test avant de conclure trop vite — bon réflexe.
+- **Test 2 (le vrai test)** : fenêtre privée 100% fraîche → tentative de connexion sur `/admin` avec une **vraie adresse email existante mais jamais invitée** sur ce site (un contact réel de Julie) → message obtenu : **"No user found with that email, or password invalid."**
+- **✅ Résultat confirmé : "Invite only" fonctionne correctement.** Aucun compte n'existe pour une adresse non invitée, aucune inscription libre n'est possible, aucun accès accordé. Le pipeline CMS résiste à un scénario réaliste d'accès non autorisé.
+- **Leçon méthodologique retenue** : pour tester un scénario "jamais invité", il faut (a) fermer complètement toutes les fenêtres privées entre deux tests différents (pas juste les onglets), et (b) utiliser une adresse valide mais réellement jamais invitée — pas un texte au hasard, pour éviter une erreur de format qui fausserait la conclusion.
+
+Tests de sécurité restants à faire éventuellement (moins urgents, système déjà jugé fiable) : tenter connexion BetaTester sur github.com et app.netlify.com directement (devrait échouer, comptes non liés), vérifier qu'aucune option d'inviter d'autres utilisateurs n'apparaît dans `/admin`.
+
+**✅ 2FA ACTIVÉE sur les deux comptes racines (22 Juillet 2026)** : GitHub (GennyCoralline) et Netlify (jcardinbif@gmail.com), méthode app d'authentification (Authenticator, pas SMS — pour éviter d'exposer un numéro de téléphone, cohérent avec la préoccupation initiale de Julie de garder les comptes du club anonymisés). Codes de récupération sauvegardés dans un gestionnaire de mots de passe (Bitwarden), pas dans les fichiers du projet. Principe de gestion des secrets établi et compris par Julie : les vraies valeurs sensibles (mots de passe, tokens, codes de récup) vivent uniquement dans le gestionnaire de mots de passe ; les notes de projet ne contiennent que des références ("voir Bitwarden → nom de l'entrée"), jamais la valeur elle-même. Le maillon faible identifié plus tôt dans la session est maintenant réglé.
+
 ### À faire ❌
-- **PROCHAINE ÉTAPE (prévue 09 Juillet 2026)** : activer la double authentification (2FA) sur le compte Netlify (jcardinbif@gmail.com) et le compte GitHub (GennyCoralline)
-- Vérifier que Netlify Identity → Registration est bien sur "Invite only" (pas "Open") — pas encore explicitement confirmé
 - Confirmer que Genny a accepté l'invite et testé une modification (Inscription → publier → vérifier sur le site en ligne)
 - Étendre le CMS aux champs priorité 2 (CA, galerie photos, logos partenaires) — nécessite de restructurer ces sections en front matter comme fait pour Inscription
-- Bannière haute résolution (demander au club)
 - PDFs officiels (code d'éthique, philosophie de gestion, calendrier) — pointent encore vers l'ancien site coralline.club, à migrer quand le club fournit les fichiers
 - Décider du sort du repo Bitbucket original (garder en backup ou fermer)
 - Transfert domaine coralline.club → Netlify (quand prêt) — Julie a confirmé comprendre la distinction domaine (déjà payé, réutilisable) vs hébergement (change de Weebly/JustHost vers Netlify sans coût additionnel)
+- Envisager d'ajouter une clé SSH pour GennyCoralline sur l'organisation, pour éviter de régénérer un token à chaque fois qu'un push manuel est nécessaire
